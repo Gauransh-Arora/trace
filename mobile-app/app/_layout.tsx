@@ -1,13 +1,16 @@
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import { StyleSheet } from "react-native";
+import { LanguageProvider } from '../LanguageContext.js';
 import {
   SafeAreaProvider,
   SafeAreaView,
 } from "react-native-safe-area-context";
+  
 
 export default function RootLayout() {
   return (
+    <LanguageProvider>
     <SafeAreaProvider>
       <SafeAreaView style={styles.container} edges={["top", "left", "right"]}>
         <Tabs
@@ -24,7 +27,7 @@ export default function RootLayout() {
             tabBarInactiveTintColor: "#888888",
             tabBarShowLabel: true,
           }}
-        >
+          >
           <Tabs.Screen
             name="profile"
             options={{
@@ -34,7 +37,7 @@ export default function RootLayout() {
                 <Ionicons name="person-outline" size={size} color={color} />
               ),
             }}
-          />
+            />
           <Tabs.Screen
             name="chat"
             options={{
@@ -44,7 +47,7 @@ export default function RootLayout() {
                 <Ionicons name="chatbubble-outline" size={size} color={color} />
               ),
             }}
-          />
+            />
           <Tabs.Screen
             name="index"
             options={{
@@ -54,7 +57,7 @@ export default function RootLayout() {
                 <Ionicons name="map-outline" size={size} color={color} />
               ),
             }}
-          />
+            />
           <Tabs.Screen
             name="journal"
             options={{
@@ -64,7 +67,7 @@ export default function RootLayout() {
                 <Ionicons name="book-outline" size={size} color={color} />
               ),
             }}
-          />
+            />
           <Tabs.Screen
             name="sos"
             options={{
@@ -74,10 +77,11 @@ export default function RootLayout() {
                 <Ionicons name="warning-outline" size={24} color="#ff4444" />
               ),
             }}
-          />
+            />
         </Tabs>
       </SafeAreaView>
     </SafeAreaProvider>
+</LanguageProvider>
   );
 }
 

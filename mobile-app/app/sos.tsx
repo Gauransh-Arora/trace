@@ -1,17 +1,20 @@
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import * as Location from 'expo-location';
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Animated, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { LanguageContext } from "../LanguageContext.js";
 
 const quickAssistance = [
-  { label: "Police", icon: "police-badge", color: "#3e8cff" },
-  { label: "Hospital", icon: "hospital", color: "#4cd964" },
-  { label: "Fire", icon: "fire", color: "#ff3b30" },
-  { label: "Women Helpline", icon: "human-female", color: "#ff2d55" },
-  { label: "Child Helpline", icon: "baby-face-outline", color: "#ff9500" },
+  { label: "police", icon: "police-badge", color: "#3e8cff" },
+  { label: "hospital", icon: "hospital", color: "#4cd964" },
+  { label: "fire", icon: "fire", color: "#ff3b30" },
+  { label: "womenHelpline", icon: "human-female", color: "#ff2d55" },
+  { label: "childHelpline", icon: "baby-face-outline", color: "#ff9500" },
 ];
 
 export default function SOS() {
+  const { getText } = useContext(LanguageContext);
+  
   const [location, setLocation] = useState<string>("Locating...");
   useEffect(() => {
     (async () => {
@@ -68,8 +71,7 @@ export default function SOS() {
       return (
         <>
           <Ionicons name="alert-circle" size={32} color="#fff" style={{ marginBottom: 8 }} />
-          <Text style={styles.sosSentText}>SOS has been sent</Text>
-          {/* <Text style={styles.sosSentSubText}>Stay safe. Help is on the way.</Text> */}
+          <Text style={styles.sosSentText}>{getText("sos.sent")}</Text>
         </>
       );
     }
@@ -81,7 +83,7 @@ export default function SOS() {
     return (
       <>
         <Ionicons name="warning" size={32} color="#fff" style={{ marginBottom: 8 }} />
-        <Text style={styles.sosText}>Press & Hold for 3 seconds</Text>
+        <Text style={styles.sosText}>{getText("sos.instruction")}</Text>
       </>
     );
   };
@@ -90,7 +92,7 @@ export default function SOS() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Ionicons name="location-sharp" size={22} color="#3e8cff" />
-        <Text style={styles.locationText}>Your Location: {location}</Text>
+        <Text style={styles.locationText}>{getText("sos.location")}: {location}</Text>
       </View>
       <View style={styles.card}>
         <Animated.View style={[styles.sosButton, sosSent && styles.sosButtonEmergency, { transform: [{ scale: scaleAnim }] }]}>
@@ -106,17 +108,17 @@ export default function SOS() {
         </Animated.View>
         <Text style={styles.cardText}>
           {sosSent
-            ? "Emergency services have been notified. Stay calm and safe."
-            : "SOS will be sent to your emergency contacts and local authorities."}
+            ? getText("sos.emergencyNotified")
+            : getText("sos.sosDescription")}
         </Text>
       </View>
       <View style={styles.assistSection}>
-        <Text style={styles.assistTitle}>Quick Assistance</Text>
+        <Text style={styles.assistTitle}>{getText("sos.quickAssistance")}</Text>
         <View style={styles.assistRow}>
           {quickAssistance.map((item) => (
             <TouchableOpacity key={item.label} style={[styles.assistBtn, { backgroundColor: item.color + "22" }]}>
               <MaterialCommunityIcons name={item.icon} size={28} color={item.color} />
-              <Text style={[styles.assistLabel, { color: item.color }]}>{item.label}</Text>
+              <Text style={[styles.assistLabel, { color: item.color }]}>{getText(`sos.${item.label}`)}</Text>
             </TouchableOpacity>
           ))}
         </View>

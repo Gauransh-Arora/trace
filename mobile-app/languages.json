@@ -1,0 +1,191 @@
+{
+  "en": {
+    "profile": {
+      "editProfile": "Edit Profile",
+      "aboutTitle": "About",
+      "aboutText": "Passionate about technology and helping others. Loves to travel and explore new places.",
+      "contactTitle": "Contact",
+      "selectLanguage": "Select Language",
+      "cancel": "Cancel"
+    },
+    "chat": {
+      "send": "Send",
+      "typeMessage": "Type your message..."
+    },
+    "sos": {
+      "sent": "SOS Sent",
+      "instruction": "Hold for 3 sec",
+      "location": "Your location",
+      "emergencyNotified": "Emergency services have been notified. Stay calm and safe.",
+      "sosDescription": "SOS will be sent to your emergency contacts and local authorities.",
+      "quickAssistance": "Quick Assistance",
+      "police": "Police",
+      "hospital": "Hospital", 
+      "fire": "Fire",
+      "womenHelpline": "Women",
+      "childHelpline": "Child"
+    }
+  },
+  "hi": {
+    "profile": {
+      "editProfile": "प्रोफ़ाइल संपादित करें",
+      "aboutTitle": "के बारे में",
+      "aboutText": "तकनीक और दूसरों की मदद करने के बारे में उत्साहित। यात्रा करना और नई जगहों की खोज करना पसंद करता है।",
+      "contactTitle": "संपर्क",
+      "selectLanguage": "भाषा चुनें",
+      "cancel": "रद्द करें"
+    },
+    "chat": {
+      "send": "भेजें",
+      "typeMessage": "अपना संदेश टाइप करें..."
+    },
+    "sos": {
+      "sent": "SOS भेजा गया",
+      "instruction": "3 सेकंड दबाएं",
+      "location": "आपका स्थान",
+      "emergencyNotified": "आपातकालीन सेवाओं को सूचित कर दिया गया है। शांत और सुरक्षित रहें।",
+      "sosDescription": "SOS आपके आपातकालीन संपर्कों और स्थानीय अधिकारियों को भेजा जाएगा।",
+      "quickAssistance": "त्वरित सहायता",
+      "police": "पुलिस",
+      "hospital": "अस्पताल",
+      "fire": "अग्निशमन",
+      "womenHelpline": "महिला",
+      "childHelpline": "बच्चे"
+    }
+  },
+  "es": {
+    "profile": {
+      "editProfile": "Editar Perfil",
+      "aboutTitle": "Acerca de",
+      "aboutText": "Apasionado por la tecnología y ayudar a otros. Le encanta viajar y explorar nuevos lugares.",
+      "contactTitle": "Contacto",
+      "selectLanguage": "Seleccionar Idioma",
+      "cancel": "Cancelar"
+    },
+    "chat": {
+      "send": "Enviar",
+      "typeMessage": "Escribe tu mensaje..."
+    },
+    "sos": {
+      "sent": "SOS Enviado",
+      "instruction": "Mantén 3 seg",
+      "location": "Tu ubicación",
+      "emergencyNotified": "Se ha notificado a los servicios de emergencia. Mantén la calma y seguridad.",
+      "sosDescription": "SOS será enviado a tus contactos de emergencia y autoridades locales.",
+      "quickAssistance": "Asistencia Rápida",
+      "police": "Policía",
+      "hospital": "Hospital",
+      "fire": "Bomberos",
+      "womenHelpline": "Mujeres",
+      "childHelpline": "Niños"
+    }
+  },
+  "fr": {
+    "profile": {
+      "editProfile": "Modifier le Profil",
+      "aboutTitle": "À Propos",
+      "aboutText": "Passionné par la technologie et l'aide aux autres. Aime voyager et explorer de nouveaux endroits.",
+      "contactTitle": "Contact",
+      "selectLanguage": "Sélectionner la Langue",
+      "cancel": "Annuler"
+    },
+    "chat": {
+      "send": "Envoyer",
+      "typeMessage": "Tapez votre message..."
+    },
+    "sos": {
+      "sent": "SOS Envoyé",
+      "instruction": "Maintenez 3 sec",
+      "location": "Votre position",
+      "emergencyNotified": "Les services d'urgence ont été notifiés. Restez calme et en sécurité.",
+      "sosDescription": "SOS sera envoyé à vos contacts d'urgence et aux autorités locales.",
+      "quickAssistance": "Assistance Rapide",
+      "police": "Police",
+      "hospital": "Hôpital",
+      "fire": "Pompiers",
+      "womenHelpline": "Femmes",
+      "childHelpline": "Enfants"
+    }
+  },
+  "de": {
+    "profile": {
+      "editProfile": "Profil Bearbeiten",
+      "aboutTitle": "Über",
+      "aboutText": "Leidenschaftlich für Technologie und anderen zu helfen. Liebt es zu reisen und neue Orte zu erkunden.",
+      "contactTitle": "Kontakt",
+      "selectLanguage": "Sprache Auswählen",
+      "cancel": "Abbrechen"
+    },
+    "chat": {
+      "send": "Senden",
+      "typeMessage": "Nachricht eingeben..."
+    },
+    "sos": {
+      "sent": "SOS Gesendet",
+      "instruction": "3 Sek halten",
+      "location": "Ihr Standort",
+      "emergencyNotified": "Rettungsdienste wurden benachrichtigt. Bleiben Sie ruhig und sicher.",
+      "sosDescription": "SOS wird an Ihre Notfallkontakte und örtlichen Behörden gesendet.",
+      "quickAssistance": "Schnelle Hilfe",
+      "police": "Polizei",
+      "hospital": "Krankenhaus",
+      "fire": "Feuerwehr",
+      "womenHelpline": "Frauen",
+      "childHelpline": "Kinder"
+    }
+  },
+  "zh": {
+    "profile": {
+      "editProfile": "编辑资料",
+      "aboutTitle": "关于",
+      "aboutText": "对技术和帮助他人充满热情。喜欢旅行和探索新地方。",
+      "contactTitle": "联系",
+      "selectLanguage": "选择语言",
+      "cancel": "取消"
+    },
+    "chat": {
+      "send": "发送",
+      "typeMessage": "输入您的消息..."
+    },
+    "sos": {
+      "sent": "SOS已发送",
+      "instruction": "按住3秒",
+      "location": "您的位置",
+      "emergencyNotified": "已通知紧急服务。保持冷静和安全。",
+      "sosDescription": "SOS将发送给您的紧急联系人和当地当局。",
+      "quickAssistance": "快速援助",
+      "police": "警察",
+      "hospital": "医院",
+      "fire": "消防",
+      "womenHelpline": "妇女",
+      "childHelpline": "儿童"
+    }
+  },
+  "ja": {
+    "profile": {
+      "editProfile": "プロフィール編集",
+      "aboutTitle": "について",
+      "aboutText": "技術と他者を助けることに情熱的。旅行や新しい場所の探索が好き。",
+      "contactTitle": "連絡先",
+      "selectLanguage": "言語を選択",
+      "cancel": "キャンセル"
+    },
+    "chat": {
+      "send": "送信",
+      "typeMessage": "メッセージを入力..."
+    },
+    "sos": {
+      "sent": "SOS送信済み",
+      "instruction": "3秒長押し",
+      "location": "あなたの場所",
+      "emergencyNotified": "緊急サービスに通知されました。冷静に、安全にお過ごしください。",
+      "sosDescription": "SOSはあなたの緊急連絡先と地元当局に送信されます。",
+      "quickAssistance": "クイックアシスタンス",
+      "police": "警察",
+      "hospital": "病院",
+      "fire": "消防",
+      "womenHelpline": "女性",
+      "childHelpline": "子供"
+    }
+  }
+}
