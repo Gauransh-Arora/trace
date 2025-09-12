@@ -29,16 +29,6 @@ export default function RootLayout() {
           }}
           >
           <Tabs.Screen
-            name="profile"
-            options={{
-              title: "Profile",
-              href: "/profile",
-              tabBarIcon: ({ color, size }) => (
-                <Ionicons name="person-outline" size={size} color={color} />
-              ),
-            }}
-            />
-          <Tabs.Screen
             name="chat"
             options={{
               title: "Chat",
@@ -69,6 +59,16 @@ export default function RootLayout() {
             }}
             />
           <Tabs.Screen
+            name="profile"
+            options={{
+              title: "Profile",
+              href: "/profile",
+              tabBarIcon: ({ color, size }) => (
+                <Ionicons name="person-outline" size={size} color={color} />
+              ),
+            }}
+          />
+          <Tabs.Screen
             name="sos"
             options={{
               title: "SOS",
@@ -78,6 +78,12 @@ export default function RootLayout() {
               ),
             }}
             />
+          <Tabs.Screen
+            name="openchat"
+            options={{
+              href: null, // This hides it from the tab bar
+            }}
+          />
         </Tabs>
       </SafeAreaView>
     </SafeAreaProvider>
