@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Backend server for SOS messaging using Twilio and Express.",
+  "description": "Backend server",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

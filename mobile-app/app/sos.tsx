@@ -1,89 +1,199 @@
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
-import * as Location from 'expo-location';
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { Animated, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { LanguageContext } from "../LanguageContext.js";
+import * as Location from "expo-location";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Animated,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Alert,
+} from "react-native";
+
+// Configuration - Update these values
+const SOS_CONFIG = {
+  BACKEND_URL: "http://172.31.129.194:5000/send-sos",
+  EMERGENCY_CONTACT: "+919142016901",
+};
 
 const quickAssistance = [
-  { label: "police", icon: "police-badge", color: "#3e8cff" },
-  { label: "hospital", icon: "hospital", color: "#4cd964" },
-  { label: "fire", icon: "fire", color: "#ff3b30" },
-  { label: "womenHelpline", icon: "human-female", color: "#ff2d55" },
-  { label: "childHelpline", icon: "baby-face-outline", color: "#ff9500" },
+  { label: "Police", icon: "police-badge", color: "#3e8cff" },
+  { label: "Hospital", icon: "hospital", color: "#4cd964" },
+  { label: "Fire", icon: "fire", color: "#ff3b30" },
+  { label: "Women Helpline", icon: "human-female", color: "#ff2d55" },
+  { label: "Child Helpline", icon: "baby-face-outline", color: "#ff9500" },
 ];
 
 export default function SOS() {
-  const { getText } = useContext(LanguageContext);
-  
   const [location, setLocation] = useState<string>("Locating...");
+  const [coordinates, setCoordinates] = useState<{
+    latitude: number;
+    longitude: number;
+  } | null>(null);
+  const [isSendingSOS, setIsSendingSOS] = useState(false);
+
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setLocation('Permission denied');
+      if (status !== "granted") {
+        setLocation("Permission denied");
         return;
       }
       let loc = await Location.getCurrentPositionAsync({});
+
+      // Store coordinates for SOS API
+      setCoordinates({
+        latitude: loc.coords.latitude,
+        longitude: loc.coords.longitude,
+      });
+
       let geo = await Location.reverseGeocodeAsync(loc.coords);
       if (geo && geo.length > 0) {
-        setLocation(`${geo[0].city || geo[0].region || 'Unknown'}, ${geo[0].country}`);
+        setLocation(
+          `${geo[0].city || geo[0].region || "Unknown"}, ${geo[0].country}`
+        );
       } else {
-        setLocation('Location unavailable');
+        setLocation("Location unavailable");
       }
     })();
   }, []);
 
   const [countdown, setCountdown] = useState<number | null>(null);
   const [sosSent, setSosSent] = useState(false);
-  const timerRef = useRef<number | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
   const scaleAnim = useRef(new Animated.Value(1)).current;
+
+  const sendSOSAlert = async () => {
+    if (!coordinates) {
+      Alert.alert("Error", "Location not available. Cannot send SOS.");
+      return;
+    }
+
+    setIsSendingSOS(true);
+
+    try {
+      const response = await fetch(SOS_CONFIG.BACKEND_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          recipientPhoneNumber: SOS_CONFIG.EMERGENCY_CONTACT,
+          messageBody: `EMERGENCY ALERT! I need immediate assistance. This is an automated SOS from TRACE app. Current location: ${location}`,
+          latitude: coordinates.latitude,
+          longitude: coordinates.longitude,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log("SOS sent successfully:", result);
+        setSosSent(true);
+        Alert.alert(
+          "SOS Sent Successfully",
+          "Emergency message has been sent to your emergency contact with your location."
+        );
+      } else {
+        throw new Error(result.error || "Failed to send SOS");
+      }
+    } catch (error) {
+      console.error("SOS Error:", error);
+      Alert.alert(
+        "SOS Failed",
+        "Failed to send emergency message. Please try again or call emergency services directly."
+      );
+      setSosSent(false);
+    } finally {
+      setIsSendingSOS(false);
+    }
+  };
 
   const handlePressIn = () => {
     setCountdown(3);
     Animated.loop(
       Animated.sequence([
-        Animated.timing(scaleAnim, { toValue: 1.08, duration: 400, useNativeDriver: true }),
-        Animated.timing(scaleAnim, { toValue: 1, duration: 400, useNativeDriver: true }),
+        Animated.timing(scaleAnim, {
+          toValue: 1.08,
+          duration: 400,
+          useNativeDriver: true,
+        }),
+        Animated.timing(scaleAnim, {
+          toValue: 1,
+          duration: 400,
+          useNativeDriver: true,
+        }),
       ])
     ).start();
 
     timerRef.current = setInterval(() => {
       setCountdown((prev) => {
         if (prev === 1) {
-          clearInterval(timerRef.current);
-          setSosSent(true);
-          Animated.timing(scaleAnim, { toValue: 1, duration: 200, useNativeDriver: true }).start();
+          if (timerRef.current) clearInterval(timerRef.current);
+          Animated.timing(scaleAnim, {
+            toValue: 1,
+            duration: 200,
+            useNativeDriver: true,
+          }).start();
+          // Trigger actual SOS API call
+          sendSOSAlert();
           return 0;
         }
-        return prev - 1;
+        return (prev || 0) - 1;
       });
     }, 1000);
   };
 
   const handlePressOut = () => {
-    clearInterval(timerRef.current);
-    Animated.timing(scaleAnim, { toValue: 1, duration: 200, useNativeDriver: true }).start();
-    setCountdown(0);
+    if (timerRef.current) clearInterval(timerRef.current);
+    Animated.timing(scaleAnim, {
+      toValue: 1,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+    setCountdown(null);
   };
 
   const getButtonContent = () => {
-    if (sosSent) {
+    if (isSendingSOS) {
       return (
         <>
-          <Ionicons name="alert-circle" size={32} color="#fff" style={{ marginBottom: 8 }} />
-          <Text style={styles.sosSentText}>{getText("sos.sent")}</Text>
+          <Ionicons
+            name="refresh"
+            size={32}
+            color="#fff"
+            style={{ marginBottom: 8 }}
+          />
+          <Text style={styles.sosSentText}>Sending SOS...</Text>
         </>
       );
     }
-    if (countdown > 0) {
+    if (sosSent) {
       return (
-        <Text style={styles.countdownText}>{countdown}</Text>
+        <>
+          <Ionicons
+            name="checkmark-circle"
+            size={32}
+            color="#fff"
+            style={{ marginBottom: 8 }}
+          />
+          <Text style={styles.sosSentText}>SOS Sent Successfully</Text>
+        </>
       );
+    }
+    if (countdown && countdown > 0) {
+      return <Text style={styles.countdownText}>{countdown}</Text>;
     }
     return (
       <>
-        <Ionicons name="warning" size={32} color="#fff" style={{ marginBottom: 8 }} />
-        <Text style={styles.sosText}>{getText("sos.instruction")}</Text>
+        <Ionicons
+          name="warning"
+          size={32}
+          color="#fff"
+          style={{ marginBottom: 8 }}
+        />
+        <Text style={styles.sosText}>Press & Hold for 3 seconds</Text>
       </>
     );
   };
@@ -92,40 +202,76 @@ export default function SOS() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Ionicons name="location-sharp" size={22} color="#3e8cff" />
-        <Text style={styles.locationText}>{getText("sos.location")}: {location}</Text>
+        <Text style={styles.locationText}>Your Location: {location}</Text>
       </View>
       <View style={styles.card}>
-        <Animated.View style={[styles.sosButton, sosSent && styles.sosButtonEmergency, { transform: [{ scale: scaleAnim }] }]}>
+        <Animated.View
+          style={[
+            styles.sosButton,
+            sosSent && styles.sosButtonEmergency,
+            { transform: [{ scale: scaleAnim }] },
+          ]}
+        >
           <TouchableOpacity
             activeOpacity={0.8}
-            onPressIn={sosSent ? undefined : handlePressIn}
-            onPressOut={sosSent ? undefined : handlePressOut}
-            disabled={sosSent}
-            style={{ alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }}
+            onPressIn={sosSent || isSendingSOS ? undefined : handlePressIn}
+            onPressOut={sosSent || isSendingSOS ? undefined : handlePressOut}
+            disabled={sosSent || isSendingSOS}
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              height: "100%",
+            }}
           >
             {getButtonContent()}
           </TouchableOpacity>
         </Animated.View>
         <Text style={styles.cardText}>
-          {sosSent
-            ? getText("sos.emergencyNotified")
-            : getText("sos.sosDescription")}
+          {isSendingSOS
+            ? "Sending emergency alert with your location..."
+            : sosSent
+            ? "Emergency message sent successfully with your location. Help is on the way."
+            : "SOS will be sent to your emergency contact with your precise location."}
         </Text>
+
+        {sosSent && (
+          <TouchableOpacity
+            style={styles.resetButton}
+            onPress={() => {
+              setSosSent(false);
+              setCountdown(null);
+            }}
+          >
+            <Text style={styles.resetButtonText}>Reset for Testing</Text>
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.assistSection}>
-        <Text style={styles.assistTitle}>{getText("sos.quickAssistance")}</Text>
+        <Text style={styles.assistTitle}>Quick Assistance</Text>
         <View style={styles.assistRow}>
           {quickAssistance.map((item) => (
-            <TouchableOpacity key={item.label} style={[styles.assistBtn, { backgroundColor: item.color + "22" }]}>
-              <MaterialCommunityIcons name={item.icon} size={28} color={item.color} />
-              <Text style={[styles.assistLabel, { color: item.color }]}>{getText(`sos.${item.label}`)}</Text>
+            <TouchableOpacity
+              key={item.label}
+              style={[styles.assistBtn, { backgroundColor: item.color + "22" }]}
+            >
+              <MaterialCommunityIcons
+                name={item.icon as any}
+                size={28}
+                color={item.color}
+              />
+              <Text style={[styles.assistLabel, { color: item.color }]}>
+                {item.label}
+              </Text>
             </TouchableOpacity>
           ))}
         </View>
       </View>
       <View style={styles.illustrationWrap}>
         <Image
-          source={{ uri: "https://cdn.dribbble.com/users/2046015/screenshots/15145399/media/6e8e7e8e7e8e7e8e7e8e7e8e7e8e7e.png?compress=1&resize=800x600" }}
+          source={{
+            uri: "https://cdn.dribbble.com/users/2046015/screenshots/15145399/media/6e8e7e8e7e8e7e8e7e8e7e8e7e8e7e.png?compress=1&resize=800x600",
+          }}
           style={styles.illustration}
         />
       </View>
@@ -207,11 +353,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 2,
   },
-  sosSentSubText: {
-    color: "#fff",
-    fontSize: 14,
-    textAlign: "center",
-  },
   cardText: {
     color: "#ccc",
     fontSize: 15,
@@ -263,5 +404,17 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     resizeMode: "cover",
     opacity: 0.8,
+  },
+  resetButton: {
+    backgroundColor: "#666",
+    borderRadius: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    marginTop: 12,
+  },
+  resetButtonText: {
+    color: "#fff",
+    fontSize: 12,
+    textAlign: "center",
   },
 });
