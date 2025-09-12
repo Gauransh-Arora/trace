@@ -78,61 +78,65 @@ export default function Alert() {
       {/* Navbar */}
       <FullScreenNavbar onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
 
-      {/* Sidebar */}
-      <FloatingSidebar
-        isOpen={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
-      />
+      <div className="flex">
+        {/* Sidebar */}
+        <div className="w-60">
+          <FloatingSidebar
+            isOpen={sidebarOpen}
+            onClose={() => setSidebarOpen(false)}
+          />
+        </div>
 
-      {/* Main Content */}
-      <div className="pt-24 pl-60 pr-6 pb-6">
-        <div className="space-y-6">
-          {/* Alerts Card */}
-          <div className="bg-[#222932] rounded-2xl p-8 text-white shadow-2xl border border-gray-800">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="font-bold text-xl flex items-center gap-2">
-                <AlertTriangle size={26} className="text-yellow-400" />
-                Recent SOS Alerts
-              </h2>
-            </div>
-            <div className="divide-y divide-gray-800">
-              {alerts.map((alert) => (
-                <div
-                  key={alert.id}
-                  className="py-5 px-2 flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-all duration-200 hover:bg-[#232a34] rounded-xl"
-                  style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.08)" }}
-                >
-                  <div className="flex items-center gap-4">
-                    <span
-                      className={`w-12 h-12 flex items-center justify-center rounded-full ${typeColors[alert.type]} bg-opacity-80 shadow-lg border-2 border-gray-700`}
-                    >
-                      {typeIcons[alert.type]}
-                    </span>
-                    <div>
-                      <span className="font-semibold text-base block">
-                        {alert.type}
+        {/* Main Content */}
+        <div className="flex-1 mt-5 pr-6 pb-6">
+          <div className="space-y-10">
+            {/* Alerts Card */}
+            <div className="bg-[#222932] rounded-2xl p-8 text-white shadow-2xl border border-gray-800">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="font-bold text-xl flex items-center gap-2">
+                  <AlertTriangle size={26} className="text-yellow-400" />
+                  Recent SOS Alerts
+                </h2>
+              </div>
+              <div className="divide-y divide-gray-800">
+                {alerts.map((alert) => (
+                  <div
+                    key={alert.id}
+                    className="py-5 px-2 flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-all duration-200 hover:bg-[#232a34] rounded-xl"
+                    style={{ boxShadow: "0 2px 8px 0 rgba(0,0,0,0.08)" }}
+                  >
+                    <div className="flex items-center gap-4">
+                      <span
+                        className={`w-12 h-12 flex items-center justify-center rounded-full ${typeColors[alert.type]} bg-opacity-80 shadow-lg border-2 border-gray-700`}
+                      >
+                        {typeIcons[alert.type]}
                       </span>
-                      <span className="text-gray-300 text-sm block mt-1">
-                        {alert.message}
+                      <div>
+                        <span className="font-semibold text-base block">
+                          {alert.type}
+                        </span>
+                        <span className="text-gray-300 text-sm block mt-1">
+                          {alert.message}
+                        </span>
+                        <span className="text-gray-500 text-xs block mt-1">
+                          <strong>Location:</strong> {alert.location}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-start md:items-end mt-2 md:mt-0 gap-2">
+                      <span className="text-gray-400 text-sm font-medium">
+                        {alert.time}
                       </span>
-                      <span className="text-gray-500 text-xs block mt-1">
-                        <strong>Location:</strong> {alert.location}
-                      </span>
+                      <button
+                        className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg shadow transition-all duration-150"
+                        style={{ minWidth: "80px", letterSpacing: "1px" }}
+                      >
+                        E-FIR
+                      </button>
                     </div>
                   </div>
-                  <div className="flex flex-col items-start md:items-end mt-2 md:mt-0 gap-2">
-                    <span className="text-gray-400 text-sm font-medium">
-                      {alert.time}
-                    </span>
-                    <button
-                      className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg shadow transition-all duration-150"
-                      style={{ minWidth: "80px", letterSpacing: "1px" }}
-                    >
-                      E-FIR
-                    </button>
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
