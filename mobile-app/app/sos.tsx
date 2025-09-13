@@ -14,8 +14,8 @@ import { LanguageContext } from "../LanguageContext.js";
 
 // Configuration - Update these values
 const SOS_CONFIG = {
-  BACKEND_URL: "http://172.31.129.194:5000/send-sos",
-  EMERGENCY_CONTACT: "+919142016901",
+  BACKEND_URL: "http://localhost:5000/send-sos",
+  EMERGENCY_CONTACT: "+XXXXXXXXXXXX",
 };
 
 const quickAssistance = [
