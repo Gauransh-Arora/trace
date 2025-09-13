@@ -1,0 +1,111 @@
+risk_type,severity,latitude,longitude,description
+Dense Forest Area,9,30.3398,76.3869,Baradari Garden dense forest section - wildlife risk
+Dense Forest Area,8,30.3156,76.4012,Sheesh Mahal forest area - isolated location
+Dense Forest Area,7,30.2987,76.3756,Kali Mata Mandir forest trail - poor visibility
+Isolated Area,8,30.2845,76.3923,Abandoned industrial area near railway
+Isolated Area,7,30.3567,76.4156,Remote farmland area - limited help access
+Water Body Risk,6,30.3234,76.3845,Sheesh Mahal pond area - drowning risk
+Water Body Risk,5,30.3089,76.3967,Baradari Garden lake - unsupervised area
+Construction Zone,6,30.3445,76.4023,New highway construction - vehicle risk
+Construction Zone,5,30.2934,76.3812,Mall construction site - debris hazard
+Night Risk Zone,7,30.3123,76.3934,Old City narrow lanes - poor lighting
+Night Risk Zone,6,30.3267,76.4001,Market area after hours - deserted
+Dense Forest Area,9,30.3501,76.3723,Bir Talab Zoo forest section - wild animals
+Dense Forest Area,8,30.2789,76.3856,Rajindra Park dense woods - isolation risk
+Dense Forest Area,7,30.3345,76.4089,Kali Devi Mandir hill forest - steep terrain
+Isolated Area,8,30.2678,76.3945,Old Patiala-Chandigarh road abandoned stretch
+Isolated Area,7,30.3612,76.3834,Rural village outskirts - no mobile coverage
+Water Body Risk,6,30.3178,76.3778,Rajindra Park lake - deep water
+Water Body Risk,5,30.3423,76.3912,Fountain area flooding risk during monsoon
+Construction Zone,6,30.3289,76.4067,Metro construction zone - heavy machinery
+Construction Zone,5,30.2856,76.3789,Bridge construction - traffic hazard
+Night Risk Zone,7,30.3034,76.3823,Adalat Bazaar after 10 PM - crime risk
+Night Risk Zone,6,30.3456,76.4012,Bus stand area late night - safety concern
+Dense Forest Area,8,30.3567,76.3645,Gurudwara forest trail - wildlife encounters
+Dense Forest Area,7,30.2923,76.3934,Moti Bagh forest area - thick vegetation
+Dense Forest Area,6,30.3234,76.4123,Baradari extension forest - unmarked trails
+Isolated Area,7,30.2745,76.3867,Industrial area boundary - security risk
+Isolated Area,6,30.3634,76.3756,Agricultural fields - seasonal flooding
+Water Body Risk,5,30.3145,76.3856,Rajindra Park stream - slippery banks
+Water Body Risk,4,30.3378,76.3923,Garden pond area - algae growth
+Construction Zone,5,30.3312,76.4045,Road widening project - dust hazard
+Construction Zone,4,30.2867,76.3801,Building renovation - falling debris
+Night Risk Zone,6,30.3089,76.3845,Heritage walk route - inadequate lighting
+Night Risk Zone,5,30.3423,76.3978,Park jogging track - isolated after dark
+Dense Forest Area,9,30.3456,76.3712,Bir Moti Bagh forest - leopard sightings
+Dense Forest Area,8,30.2834,76.3889,Kali Mata temple forest - dense canopy
+Dense Forest Area,7,30.3289,76.4134,Sheesh Mahal back forest - no mobile signal
+Isolated Area,8,30.2689,76.3912,Old cantonment area - restricted access
+Isolated Area,7,30.3578,76.3823,Village connecting road - poor maintenance
+Water Body Risk,6,30.3201,76.3834,Baradari Garden canal - strong current
+Water Body Risk,5,30.3367,76.3956,Fountain complex - electrical hazard
+Construction Zone,6,30.3334,76.4078,Shopping complex construction - crane risk
+Construction Zone,5,30.2878,76.3812,Flyover construction - height danger
+Night Risk Zone,7,30.3067,76.3867,Old fort area - ghost stories deter help
+Night Risk Zone,6,30.3445,76.3989,Market closing time - pickpocket risk
+Dense Forest Area,8,30.3512,76.3689,Zoo extension forest - animal escape risk
+Dense Forest Area,7,30.2945,76.3923,Rajindra Park hill - steep slopes
+Dense Forest Area,6,30.3267,76.4156,Temple forest trail - overgrown path
+Isolated Area,7,30.2723,76.3878,Railway crossing area - train accident risk
+Isolated Area,6,30.3645,76.3789,Farmhouse area - guard dog attacks
+Water Body Risk,5,30.3156,76.3823,Park water feature - bacterial infection
+Water Body Risk,4,30.3389,76.3945,Garden stream - mosquito breeding
+Construction Zone,5,30.3323,76.4056,Mall parking construction - vehicle fall
+Construction Zone,4,30.2889,76.3823,Road repair work - pothole danger
+Night Risk Zone,6,30.3078,76.3856,Heritage monument - no security after 8 PM
+Night Risk Zone,5,30.3434,76.3967,Garden area - couples harassment reports
+Dense Forest Area,9,30.3423,76.3734,Moti Bagh core forest - tiger reserve nearby
+Dense Forest Area,8,30.2856,76.3901,Kali Devi hill forest - landslide risk
+Dense Forest Area,7,30.3301,76.4145,Baradari forest extension - hunting reports
+Isolated Area,8,30.2701,76.3934,Industrial waste area - toxic exposure
+Isolated Area,7,30.3589,76.3812,Village boundary - stray dog packs
+Water Body Risk,6,30.3189,76.3845,Rajindra lake - algae bloom toxicity
+Water Body Risk,5,30.3356,76.3978,Water tank area - drowning incidents
+Construction Zone,6,30.3345,76.4089,Highway expansion - heavy vehicle risk
+Construction Zone,5,30.2901,76.3834,Building demolition - asbestos hazard
+Night Risk Zone,7,30.3089,76.3878,Old city lanes - drug activity reports
+Night Risk Zone,6,30.3456,76.4001,Bus terminal - theft incidents
+Dense Forest Area,8,30.3534,76.3701,Forest department area - restricted entry
+Dense Forest Area,7,30.2967,76.3912,Park forest section - wild boar sightings
+Dense Forest Area,6,30.3278,76.4167,Temple approach forest - snake encounters
+Isolated Area,7,30.2734,76.3889,Abandoned factory - structural collapse risk
+Isolated Area,6,30.3656,76.3801,Rural road - seasonal impassable
+Water Body Risk,5,30.3167,76.3834,Garden pond - E.coli contamination
+Water Body Risk,4,30.3401,76.3956,Decorative fountain - electrical short risk
+Construction Zone,5,30.3334,76.4067,Metro station construction - excavation danger
+Construction Zone,4,30.2912,76.3845,Road construction - dust lung hazard
+Night Risk Zone,6,30.3101,76.3867,Monument area - inadequate police patrol
+Night Risk Zone,5,30.3445,76.3989,Park closing time - visibility issues
+Dense Forest Area,9,30.3445,76.3723,Core forest reserve - elephant corridor
+Dense Forest Area,8,30.2878,76.3923,Hill forest - rockfall danger
+Dense Forest Area,7,30.3312,76.4178,Forest camping area - bear activity
+Isolated Area,8,30.2712,76.3945,Military area boundary - trespassing risk
+Isolated Area,7,30.3601,76.3823,Agricultural processing - chemical exposure
+Water Body Risk,6,30.3178,76.3856,Lake fishing area - deep water currents
+Water Body Risk,5,30.3367,76.3989,Water treatment plant - contamination risk
+Construction Zone,6,30.3356,76.4078,Bridge construction - height fall risk
+Construction Zone,5,30.2923,76.3856,Building construction - crane collapse
+Night Risk Zone,7,30.3112,76.3889,Heritage site - ghost tour scam area
+Night Risk Zone,6,30.3467,76.4012,Market area - pickpocket gangs active
+Dense Forest Area,8,30.3556,76.3712,Protected forest - wildlife sanctuary
+Dense Forest Area,7,30.2989,76.3934,Park extension - unmarked trails
+Dense Forest Area,6,30.3289,76.4189,Temple forest - pilgrimage rush danger
+Isolated Area,7,30.2745,76.3901,Railway yard - electrocution risk
+Isolated Area,6,30.3667,76.3834,Village outskirts - honor killing reports
+Water Body Risk,5,30.3189,76.3867,Stream crossing - flash flood risk
+Water Body Risk,4,30.3412,76.3967,Garden water body - slip and fall
+Construction Zone,5,30.3367,76.4089,Shopping center - falling material
+Construction Zone,4,30.2934,76.3867,Road widening - traffic accident
+Night Risk Zone,6,30.3123,76.3901,Old fort - drug dealing reports
+Night Risk Zone,5,30.3478,76.4023,Garden area - eve teasing incidents
+Dense Forest Area,9,30.3467,76.3734,Forest core - recent leopard attacks
+Dense Forest Area,8,30.2901,76.3945,Hill slope forest - landslide zone
+Dense Forest Area,7,30.3323,76.4201,Forest trail - hunting trap danger
+Isolated Area,8,30.2723,76.3912,Waste disposal - methane gas risk
+Isolated Area,7,30.3612,76.3845,Farm boundary - pesticide exposure
+Water Body Risk,6,30.3201,76.3878,Lake area - blue-green algae
+Water Body Risk,5,30.3378,76.4001,Water feature - legionella bacteria
+Construction Zone,6,30.3378,76.4101,Highway construction - vehicle collision
+Construction Zone,5,30.2945,76.3878,Building site - falling object hazard
+Night Risk Zone,7,30.3134,76.3912,Monument complex - robbery incidents
+Night Risk Zone,6,30.3489,76.4034,Terminal area - human trafficking risk

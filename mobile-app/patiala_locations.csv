@@ -1,0 +1,107 @@
+Location,latitude,longitude,category
+"Qila Mubarak (Patiala Fort)",30.3398,76.3869,Historical Monument
+"Sheesh Mahal (Palace of Mirrors)",30.3156,76.4012,Historical Monument
+"Baradari Garden",30.3234,76.3845,Garden/Park
+"Rajindra Park",30.3178,76.3778,Garden/Park
+"Kali Mata Mandir",30.2987,76.3756,Religious Site
+"Bir Talab Zoo",30.3501,76.3723,Zoo/Wildlife
+"Moti Bagh Palace",30.3423,76.3734,Historical Monument
+"Gurudwara Dukh Nivaran Sahib",30.3567,76.3645,Religious Site
+"Patiala Railway Station",30.3267,76.4001,Transportation
+"Patiala Bus Stand",30.3456,76.4012,Transportation
+"Adalat Bazaar",30.3034,76.3823,Shopping Area
+"Mall Road Patiala",30.3289,76.4067,Shopping Area
+"Punjabi University",30.3445,76.4023,Educational Institution
+"Netaji Subhash National Institute of Sports",30.3612,76.3834,Sports Complex
+"Omaxe Mall",30.3334,76.4078,Shopping Mall
+"Baradari Restaurant",30.3245,76.3856,Restaurant
+"Hotel Neelam",30.3356,76.4001,Hotel
+"Patiala Heritage Hotel",30.3389,76.3923,Hotel
+"Government Medical College",30.3423,76.3912,Medical Facility
+"Civil Hospital Patiala",30.3367,76.3956,Medical Facility
+"Police Station City",30.3301,76.3934,Police Station
+"Fire Station Patiala",30.3278,76.3945,Fire Station
+"Patiala Airport",30.2845,76.3923,Airport
+"Old Patiala-Chandigarh Road",30.2678,76.3945,Highway
+"Patiala-Sangrur Road",30.3578,76.3823,Highway
+"Fountain Chowk",30.3423,76.3978,Landmark
+"Leela Bhawan",30.3234,76.3889,Cultural Center
+"Kali Devi Mandir Hill",30.3345,76.4089,Religious Site
+"Bir Moti Bagh",30.3456,76.3712,Forest Area
+"Rajindra Lake",30.3189,76.3845,Water Body
+"Patiala Cantonment",30.2689,76.3912,Military Area
+"Industrial Area Phase 1",30.2856,76.3789,Industrial Zone
+"Industrial Area Phase 2",30.2867,76.3801,Industrial Zone
+"Tripuri Town",30.3634,76.3756,Residential Area
+"Urban Estate Phase 1",30.3512,76.3689,Residential Area
+"Urban Estate Phase 2",30.3534,76.3701,Residential Area
+"Lehal",30.3645,76.3789,Village
+"Bhupindra Road",30.3089,76.3845,Main Road
+"Sirhind Road",30.3167,76.3834,Main Road
+"GT Road Patiala",30.3201,76.3834,Highway
+"Patiala-Bathinda Road",30.2723,76.3878,Highway
+"Samana Road",30.3601,76.3823,Highway
+"Nabha Road",30.3667,76.3834,Highway
+"Rajpura Road",30.3612,76.3845,Highway
+"Ghanaur Road",30.2734,76.3889,Highway
+"Patran Road",30.3656,76.3801,Highway
+"Shutrana",30.3589,76.3812,Village
+"Ablowal",30.2701,76.3934,Village
+"Banur Border",30.2745,76.3867,Border Area
+"Rajpura Border",30.2712,76.3945,Border Area
+"Samana Border",30.3667,76.3834,Border Area
+"Patiala Golf Club",30.3445,76.3989,Sports Complex
+"Baradari Cricket Ground",30.3378,76.3945,Sports Ground
+"Polo Ground",30.3356,76.3978,Sports Ground
+"Nehru Stadium",30.3334,76.4056,Stadium
+"Swimming Pool Complex",30.3312,76.4045,Sports Facility
+"Gurudwara Sahib Samadhi",30.2945,76.3923,Religious Site
+"Hanuman Mandir",30.3267,76.4156,Religious Site
+"Durga Mata Mandir",30.2923,76.3934,Religious Site
+"Radha Krishna Mandir",30.3289,76.4123,Religious Site
+"Sai Baba Mandir",30.2834,76.3889,Religious Site
+"Patiala Central Jail",30.3456,76.4001,Government Building
+"District Court",30.3434,76.3967,Government Building
+"Collectorate",30.3412,76.3967,Government Building
+"Municipal Corporation",30.3389,76.3956,Government Building
+"Post Office GPO",30.3367,76.3989,Post Office
+"SBI Main Branch",30.3345,76.4089,Bank
+"PNB Fountain Branch",30.3323,76.4056,Bank
+"HDFC Bank Mall Road",30.3301,76.4045,Bank
+"ICICI Bank Urban Estate",30.3278,76.4034,Bank
+"Axis Bank Leela Bhawan",30.3256,76.4023,Bank
+"Patiala Medical College",30.3234,76.4012,Medical College
+"Dental College",30.3212,76.4001,Medical College
+"Nursing College",30.3189,76.3989,Medical College
+"Pharmacy College",30.3167,76.3978,Medical College
+"Veterinary College",30.3145,76.3967,Medical College
+"Government College for Girls",30.3123,76.3956,Educational Institution
+"Government College for Boys",30.3101,76.3945,Educational Institution
+"DAV College",30.3078,76.3934,Educational Institution
+"Arya College",30.3056,76.3923,Educational Institution
+"Khalsa College",30.3034,76.3912,Educational Institution
+"Patiala Public School",30.3012,76.3901,School
+"Sacred Heart School",30.2989,76.3889,School
+"St. Joseph's School",30.2967,76.3878,School
+"Budha Dal Public School",30.2945,76.3867,School
+"Kaintal School",30.2923,76.3856,School
+"Patiala Shahi Samosa",30.3401,76.3956,Restaurant
+"Gopal Sweets",30.3378,76.3945,Restaurant
+"Bharawan Da Dhaba",30.3356,76.3934,Restaurant
+"Haveli Restaurant",30.3334,76.3923,Restaurant
+"Royal Treat",30.3312,76.3912,Restaurant
+"Hotel President",30.3289,76.3901,Hotel
+"Hotel Sunbeam",30.3267,76.3889,Hotel
+"Hotel Rajmahal",30.3245,76.3878,Hotel
+"Hotel Grand",30.3223,76.3867,Hotel
+"Hotel Paradise",30.3201,76.3856,Hotel
+"Patiala Peg Bar",30.3178,76.3845,Bar/Pub
+"Royal Bar",30.3156,76.3834,Bar/Pub
+"Club 29",30.3134,76.3823,Bar/Pub
+"Vintage Lounge",30.3112,76.3812,Bar/Pub
+"Heritage Pub",30.3089,76.3801,Bar/Pub
+"City Hospital",30.3067,76.3789,Hospital
+"Max Hospital",30.3045,76.3778,Hospital
+"Apollo Clinic",30.3023,76.3767,Hospital
+"Fortis Clinic",30.3001,76.3756,Hospital
+"Ivy Hospital",30.2978,76.3745,Hospital
