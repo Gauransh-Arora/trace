@@ -32,6 +32,8 @@ export default function MapScreen() {
     duration: number;
   } | null>(null);
   const [isCalculatingRoute, setIsCalculatingRoute] = useState(false);
+  const [showHeatmap, setShowHeatmap] = useState(false);
+  const [riskData, setRiskData] = useState<any[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -48,11 +50,145 @@ export default function MapScreen() {
           longitude: location.coords.longitude,
         });
         setLocationStatus("Location found");
+
+        // Load risk data
+        loadRiskData();
       } catch (error) {
         setLocationStatus("Error getting location");
       }
     })();
   }, []);
+
+  const loadRiskData = () => {
+    // Sample Patiala risk data (in production, you'd load from CSV)
+    const sampleRiskData = [
+      {
+        latitude: 30.3398,
+        longitude: 76.3869,
+        severity: 9,
+        type: "Dense Forest Area",
+      },
+      {
+        latitude: 30.3156,
+        longitude: 76.4012,
+        severity: 8,
+        type: "Dense Forest Area",
+      },
+      {
+        latitude: 30.2987,
+        longitude: 76.3756,
+        severity: 7,
+        type: "Dense Forest Area",
+      },
+      {
+        latitude: 30.2845,
+        longitude: 76.3923,
+        severity: 8,
+        type: "Isolated Area",
+      },
+      {
+        latitude: 30.3567,
+        longitude: 76.4156,
+        severity: 7,
+        type: "Isolated Area",
+      },
+      {
+        latitude: 30.3234,
+        longitude: 76.3845,
+        severity: 6,
+        type: "Water Body Risk",
+      },
+      {
+        latitude: 30.3089,
+        longitude: 76.3967,
+        severity: 5,
+        type: "Water Body Risk",
+      },
+      {
+        latitude: 30.3445,
+        longitude: 76.4023,
+        severity: 6,
+        type: "Construction Zone",
+      },
+      {
+        latitude: 30.2934,
+        longitude: 76.3812,
+        severity: 5,
+        type: "Construction Zone",
+      },
+      {
+        latitude: 30.3123,
+        longitude: 76.3934,
+        severity: 7,
+        type: "Night Risk Zone",
+      },
+      {
+        latitude: 30.3267,
+        longitude: 76.4001,
+        severity: 6,
+        type: "Night Risk Zone",
+      },
+      {
+        latitude: 30.3501,
+        longitude: 76.3723,
+        severity: 9,
+        type: "Dense Forest Area",
+      },
+      {
+        latitude: 30.2789,
+        longitude: 76.3856,
+        severity: 8,
+        type: "Dense Forest Area",
+      },
+      {
+        latitude: 30.3345,
+        longitude: 76.4089,
+        severity: 7,
+        type: "Dense Forest Area",
+      },
+      {
+        latitude: 30.2678,
+        longitude: 76.3945,
+        severity: 8,
+        type: "Isolated Area",
+      },
+      {
+        latitude: 30.3612,
+        longitude: 76.3834,
+        severity: 7,
+        type: "Isolated Area",
+      },
+      {
+        latitude: 30.3178,
+        longitude: 76.3778,
+        severity: 6,
+        type: "Water Body Risk",
+      },
+      {
+        latitude: 30.3423,
+        longitude: 76.3912,
+        severity: 5,
+        type: "Water Body Risk",
+      },
+      {
+        latitude: 30.3289,
+        longitude: 76.4067,
+        severity: 6,
+        type: "Construction Zone",
+      },
+      {
+        latitude: 30.2856,
+        longitude: 76.3789,
+        severity: 5,
+        type: "Construction Zone",
+      },
+    ];
+    setRiskData(sampleRiskData);
+  };
+
+  const toggleHeatmap = () => {
+    setShowHeatmap(!showHeatmap);
+  };
 
   const handleSearch = async () => {
     if (!searchQuery.trim()) return;
@@ -220,6 +356,7 @@ export default function MapScreen() {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
                 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+                <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
                 <style>
                   body { margin: 0; padding: 0; }
                   #map { height: 100vh; width: 100vw; }
@@ -230,7 +367,7 @@ export default function MapScreen() {
                 <script>
                   var map = L.map('map').setView([${userLocation.latitude}, ${
               userLocation.longitude
-            }], 15);
+            }], 13);
                   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '© OpenStreetMap contributors'
                   }).addTo(map);
@@ -251,6 +388,54 @@ export default function MapScreen() {
                     fillOpacity: 0.2,
                     radius: 100
                   }).addTo(map);
+
+                  // Risk data for heatmap
+                  var riskData = ${JSON.stringify(riskData)};
+                  var heatmapLayer = null;
+                  
+                  // Create heatmap layer
+                  function createHeatmap() {
+                    if (riskData && riskData.length > 0) {
+                      var heatPoints = riskData.map(function(point) {
+                        return [point.latitude, point.longitude, point.severity / 10]; // Normalize severity
+                      });
+                      
+                      heatmapLayer = L.heatLayer(heatPoints, {
+                        radius: 35,
+                        blur: 20,
+                        maxZoom: 17,
+                        minOpacity: 0.4,
+                        max: 1.0,
+                        gradient: {
+                          0.0: 'rgba(0, 255, 0, 0.8)',    // Bright green for low risk
+                          0.2: 'rgba(255, 255, 0, 0.8)',  // Bright yellow for low-medium risk
+                          0.4: 'rgba(255, 165, 0, 0.8)',  // Bright orange for medium risk
+                          0.6: 'rgba(255, 69, 0, 0.8)',   // Red-orange for high risk
+                          0.8: 'rgba(255, 0, 0, 0.8)',    // Bright red for very high risk
+                          1.0: 'rgba(139, 0, 0, 0.9)'     // Dark red for extreme risk
+                        }
+                      });
+                    }
+                  }
+                  
+                  // Toggle heatmap visibility
+                  function toggleHeatmap(show) {
+                    if (show) {
+                      if (!heatmapLayer) {
+                        createHeatmap();
+                      }
+                      if (heatmapLayer) {
+                        map.addLayer(heatmapLayer);
+                      }
+                    } else {
+                      if (heatmapLayer) {
+                        map.removeLayer(heatmapLayer);
+                      }
+                    }
+                  }
+                  
+                  // Initialize heatmap if needed
+                  ${showHeatmap ? "toggleHeatmap(true);" : ""}
 
                   ${
                     destination
@@ -333,6 +518,31 @@ export default function MapScreen() {
             </View>
           )}
         </View>
+      </View>
+
+      {/* Heatmap Toggle Button */}
+      <View style={styles.heatmapContainer}>
+        <TouchableOpacity
+          style={[
+            styles.heatmapButton,
+            showHeatmap && styles.heatmapButtonActive,
+          ]}
+          onPress={toggleHeatmap}
+        >
+          <Ionicons
+            name={showHeatmap ? "eye" : "eye-off"}
+            size={20}
+            color={showHeatmap ? "#fff" : "#888"}
+          />
+          <Text
+            style={[
+              styles.heatmapButtonText,
+              showHeatmap && styles.heatmapButtonTextActive,
+            ]}
+          >
+            Risk Map
+          </Text>
+        </TouchableOpacity>
       </View>
 
       {/* Route Info Panel */}
@@ -471,5 +681,39 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "600",
+  },
+  heatmapContainer: {
+    position: "absolute",
+    top: 120,
+    right: 16,
+    zIndex: 1000,
+  },
+  heatmapButton: {
+    backgroundColor: "#262d36",
+    borderRadius: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  heatmapButtonActive: {
+    backgroundColor: "#ff3b30",
+  },
+  heatmapButtonText: {
+    color: "#888",
+    fontSize: 12,
+    fontWeight: "600",
+    marginLeft: 6,
+  },
+  heatmapButtonTextActive: {
+    color: "#fff",
   },
 });

@@ -1,6 +1,6 @@
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import * as Location from "expo-location";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   Animated,
   Image,
@@ -10,6 +10,7 @@ import {
   View,
   Alert,
 } from "react-native";
+import { LanguageContext } from "../LanguageContext.js";
 
 // Configuration - Update these values
 const SOS_CONFIG = {
@@ -18,14 +19,16 @@ const SOS_CONFIG = {
 };
 
 const quickAssistance = [
-  { label: "Police", icon: "police-badge", color: "#3e8cff" },
-  { label: "Hospital", icon: "hospital", color: "#4cd964" },
-  { label: "Fire", icon: "fire", color: "#ff3b30" },
-  { label: "Women Helpline", icon: "human-female", color: "#ff2d55" },
-  { label: "Child Helpline", icon: "baby-face-outline", color: "#ff9500" },
+  { labelKey: "police", icon: "police-badge", color: "#3e8cff" },
+  { labelKey: "hospital", icon: "hospital", color: "#4cd964" },
+  { labelKey: "fire", icon: "fire", color: "#ff3b30" },
+  { labelKey: "womenHelpline", icon: "human-female", color: "#ff2d55" },
+  { labelKey: "childHelpline", icon: "baby-face-outline", color: "#ff9500" },
 ];
 
 export default function SOS() {
+  const { getText } = useContext(LanguageContext);
+
   const [location, setLocation] = useState<string>("Locating...");
   const [coordinates, setCoordinates] = useState<{
     latitude: number;
@@ -92,8 +95,9 @@ export default function SOS() {
         console.log("SOS sent successfully:", result);
         setSosSent(true);
         Alert.alert(
-          "SOS Sent Successfully",
-          "Emergency message has been sent to your emergency contact with your location."
+          getText("sos.sent") || "SOS Sent Successfully",
+          getText("sos.emergencyNotified") ||
+            "Emergency message has been sent to your emergency contact with your location."
         );
       } else {
         throw new Error(result.error || "Failed to send SOS");
@@ -178,7 +182,7 @@ export default function SOS() {
             color="#fff"
             style={{ marginBottom: 8 }}
           />
-          <Text style={styles.sosSentText}>SOS Sent Successfully</Text>
+          <Text style={styles.sosSentText}>{getText("sos.sent")}</Text>
         </>
       );
     }
@@ -193,7 +197,7 @@ export default function SOS() {
           color="#fff"
           style={{ marginBottom: 8 }}
         />
-        <Text style={styles.sosText}>Press & Hold for 3 seconds</Text>
+        <Text style={styles.sosText}>{getText("sos.instruction")}</Text>
       </>
     );
   };
@@ -202,7 +206,9 @@ export default function SOS() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Ionicons name="location-sharp" size={22} color="#3e8cff" />
-        <Text style={styles.locationText}>Your Location: {location}</Text>
+        <Text style={styles.locationText}>
+          {getText("sos.location")}: {location}
+        </Text>
       </View>
       <View style={styles.card}>
         <Animated.View
@@ -231,8 +237,8 @@ export default function SOS() {
           {isSendingSOS
             ? "Sending emergency alert with your location..."
             : sosSent
-            ? "Emergency message sent successfully with your location. Help is on the way."
-            : "SOS will be sent to your emergency contact with your precise location."}
+            ? getText("sos.emergencyNotified")
+            : getText("sos.sosDescription")}
         </Text>
 
         {sosSent && (
@@ -248,11 +254,11 @@ export default function SOS() {
         )}
       </View>
       <View style={styles.assistSection}>
-        <Text style={styles.assistTitle}>Quick Assistance</Text>
+        <Text style={styles.assistTitle}>{getText("sos.quickAssistance")}</Text>
         <View style={styles.assistRow}>
           {quickAssistance.map((item) => (
             <TouchableOpacity
-              key={item.label}
+              key={item.labelKey}
               style={[styles.assistBtn, { backgroundColor: item.color + "22" }]}
             >
               <MaterialCommunityIcons
@@ -261,7 +267,7 @@ export default function SOS() {
                 color={item.color}
               />
               <Text style={[styles.assistLabel, { color: item.color }]}>
-                {item.label}
+                {getText(`sos.${item.labelKey}`)}
               </Text>
             </TouchableOpacity>
           ))}
